@@ -121,7 +121,7 @@ class Eve(Optimizer):
                         state["max_v"], v, out=state["max_v"])
                 p.data.addcdiv_(
                     -lr if d_tilde == 1.0 else -lr / d_tilde,
-                    m * bias_correction2,
+                    m * math.sqrt(bias_correction2),
                     v.sqrt()
                      .add(eps, math.sqrt(bias_correction2))
                      .mul(bias_correction1)
